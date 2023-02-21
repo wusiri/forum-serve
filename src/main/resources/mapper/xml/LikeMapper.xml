@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wlong.work.forumserve.dao.SlideshowDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="wlong.work.forumserve.domain.Slideshow">
+        <id column="slideshow_id" property="slideshowId" />
+        <result column="image_url" property="imageUrl" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        slideshow_id, image_url
+    </sql>
+</mapper>
