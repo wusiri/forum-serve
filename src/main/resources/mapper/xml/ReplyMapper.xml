@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="wlong.work.forumserve.dao.ReplyDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="wlong.work.forumserve.domain.Reply">
+        <id column="reply_id" property="replyId" />
+        <result column="reply_content" property="replyContent" />
+        <result column="reply_to_user_id" property="replyToUserId" />
+        <result column="comment_id" property="commentId" />
+        <result column="reply_user_id" property="replyUserId" />
+        <result column="reply_time" property="replyTime" />
+    </resultMap>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        reply_id, reply_content, reply_to_user_id, comment_id, reply_user_id, reply_time
+    </sql>
 </mapper>

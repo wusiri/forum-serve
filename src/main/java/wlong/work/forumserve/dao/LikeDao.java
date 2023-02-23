@@ -1,7 +1,8 @@
 package wlong.work.forumserve.dao;
 
-import wlong.work.forumserve.domain.Slideshow;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import wlong.work.forumserve.domain.Like;
+import wlong.work.forumserve.domain.Slideshow;
 
 /**
  * <p>
@@ -11,6 +12,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author wl
  * @since 2022-11-07
  */
-public interface SlideshowDao extends BaseMapper<Slideshow> {
+public interface LikeDao extends BaseMapper<Like> {
 
 }

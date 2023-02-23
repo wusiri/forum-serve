@@ -1,4 +1,4 @@
-package wlong.work.forumserve.handler.utils;
+package wlong.work.forumserve.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Random;

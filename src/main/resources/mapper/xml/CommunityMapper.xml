@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="wlong.work.forumserve.dao.CommunityDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="wlong.work.forumserve.domain.Community">
+        <id column="community_id" property="communityId" />
+        <result column="community_name" property="communityName" />
+        <result column="community_introduce" property="communityIntroduce" />
+        <result column="community_image" property="communityImage" />
+        <result column="community_user_num" property="communityUserNum" />
+        <result column="create_user_id" property="createUserId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        community_id, community_name, community_introduce, community_image, community_user_num, create_user_id, create_time
+    </sql>
 </mapper>

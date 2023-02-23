@@ -19,6 +19,7 @@ import wlong.work.forumserve.service.ArticleLabelService;
 import wlong.work.forumserve.service.CommunityService;
 import wlong.work.forumserve.service.UploadImageService;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,41 +33,78 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/tags")
-@Api(value = "板块Controller", tags = {"板块访问接口"})
+@Api(value = "板块Controller", tags = {"搜索词访问接口"})
 @Slf4j
 public class CommunityLableController {
 
 
-    @Autowired
+    @Resource
     private CommunityService communityService;
-    @Autowired
+    @Resource
     private ArticleLabelService articleLabelService;
 
-    @ApiOperation(value = "通过文章ID获取评论和回复")
+    @ApiOperation(value = "获取搜索词")
     @GetMapping("getTag")
-    public R<List<CommunityLabelDto>> getCommentReply() {
+    public R<List<CommunityLabelDto>> getTag() {
         List<CommunityLabelDto> list = new ArrayList<>();
         //查询板块的指定字段
         LambdaQueryWrapper<Community> communityLambdaQueryWrapper = new LambdaQueryWrapper<>();
         communityLambdaQueryWrapper.select(Community::getCommunityId, Community::getCommunityName);
         List<Community> communities = communityService.list(communityLambdaQueryWrapper);
         //查询标签的指定字段
-        LambdaQueryWrapper<ArticleLabel> labelLambdaQueryWrapper=new LambdaQueryWrapper<>();
-        labelLambdaQueryWrapper.select(ArticleLabel::getLabelId,ArticleLabel::getLabelName);
+        LambdaQueryWrapper<ArticleLabel> labelLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        labelLambdaQueryWrapper.select(ArticleLabel::getLabelId, ArticleLabel::getLabelName);
         List<ArticleLabel> labels = articleLabelService.list(labelLambdaQueryWrapper);
-        //填充字段
+        //填充字段,0为板块，1为标签
         if (!communities.isEmpty()) {
             for (int i = 0; i < communities.size(); i++) {
                 CommunityLabelDto communityLabelDto = new CommunityLabelDto();
                 Community community = communities.get(i);
-                communityLabelDto.setCommunityId(community.getCommunityId());
-                communityLabelDto.setCommunityName(community.getCommunityName());
-               
-
-
-               
-                
+                communityLabelDto.setTagId(community.getCommunityId());
+                communityLabelDto.setTagName(community.getCommunityName());
+                communityLabelDto.setTagState(1);
+                list.add(communityLabelDto);
             }
-            
         }
+        if(!labels.isEmpty()){
+            for (int i = 0; i < labels.size(); i++) {
+                CommunityLabelDto communityLabelDto = new CommunityLabelDto();
+                ArticleLabel label = labels.get(i);
+                communityLabelDto.setTagId(label.getLabelId());
+                communityLabelDto.setTagName(label.getLabelName());
+                communityLabelDto.setTagState(2);
+            }
+        }
+        return R.success(list);
+    }
+
+
+    @ApiOperation(value = "获取搜索词")
+    @GetMapping("getTags")
+    public R<List<String>> getTags() {
+        List<String> list=new ArrayList<>();
+        //查询板块的指定字段
+        LambdaQueryWrapper<Community> communityLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        communityLambdaQueryWrapper.select(Community::getCommunityName);
+        List<Community> communities = communityService.list(communityLambdaQueryWrapper);
+        //查询标签的指定字段
+        LambdaQueryWrapper<ArticleLabel> labelLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        labelLambdaQueryWrapper.select(ArticleLabel::getLabelName);
+        List<ArticleLabel> labels = articleLabelService.list(labelLambdaQueryWrapper);
+        //填充字段,0为板块，1为标签
+        if (!communities.isEmpty()) {
+            for (int i = 0; i < communities.size(); i++) {
+                Community community = communities.get(i);
+                list.add(community.getCommunityName());
+            }
+        }
+        if(!labels.isEmpty()){
+            for (int i = 0; i < labels.size(); i++) {
+                ArticleLabel label = labels.get(i);
+                list.add(label.getLabelName());
+            }
+        }
+        return R.success(list);
+    }
+}
 

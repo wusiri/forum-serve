@@ -2,7 +2,7 @@ package wlong.work.forumserve.service.impl;
 
 import wlong.work.forumserve.domain.Area;
 import wlong.work.forumserve.dao.AreaDao;
-import wlong.work.forumserve.service.IAreaService;
+import wlong.work.forumserve.service.AreaService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2022-11-07
  */
 @Service
-public class AreaServiceImpl extends ServiceImpl<AreaDao, Area> implements IAreaService {
+public class AreaServiceImpl extends ServiceImpl<AreaDao, Area> implements AreaService {
 
 }

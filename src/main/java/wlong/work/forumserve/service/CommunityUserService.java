@@ -1,6 +1,6 @@
 package wlong.work.forumserve.service;
 
-import wlong.work.forumserve.domain.Community_user;
+import wlong.work.forumserve.domain.CommunityUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author wl
  * @since 2022-11-07
  */
-public interface ICommunity_userService extends IService<Community_user> {
+public interface CommunityUserService extends IService<CommunityUser> {
 
 }

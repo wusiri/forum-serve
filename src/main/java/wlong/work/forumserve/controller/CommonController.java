@@ -1,4 +1,4 @@
-package work.wlong.takeout.controller;
+package wlong.work.forumserve.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import work.wlong.takeout.common.R;
+import wlong.work.forumserve.common.R;
+
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +25,7 @@ import java.util.UUID;
 @Slf4j
 public class CommonController {
 
-    @Value("${takeout.path}")
+    @Value("${forum.path}")
     private String basePath;
 
     /**

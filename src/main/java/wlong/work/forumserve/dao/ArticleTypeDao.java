@@ -1,6 +1,6 @@
 package wlong.work.forumserve.dao;
 
-import wlong.work.forumserve.domain.Article_type;
+import wlong.work.forumserve.domain.ArticleType;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author wl
  * @since 2022-11-07
  */
-public interface Article_typeDao extends BaseMapper<Article_type> {
+public interface ArticleTypeDao extends BaseMapper<ArticleType> {
 
 }

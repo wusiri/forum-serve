@@ -99,7 +99,7 @@ public class Article implements Serializable {
      * 问题解决状态
      */
     @ApiModelProperty("解决状态")
-    private Integer auditState;
+    private Integer solveState;
 
 
     /**
@@ -138,6 +138,12 @@ public class Article implements Serializable {
      */
     @ApiModelProperty("是否推荐")
     private Integer recommend;
+
+    /**
+     * 审核状态
+     */
+    @ApiModelProperty("审核状态")
+    private Integer auditState;
 
 
 }

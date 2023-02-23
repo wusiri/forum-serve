@@ -1,6 +1,7 @@
 package wlong.work.forumserve.service;
 
-import wlong.work.forumserve.domain.Article_label;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import wlong.work.forumserve.domain.ArticleLabel;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author wl
  * @since 2022-11-07
  */
-public interface IArticle_labelService extends IService<Article_label> {
+public interface ArticleLabelService extends IService<ArticleLabel> {
 
+    Page<ArticleLabel> getPage(Integer page, Integer pageSize, String name);
 }

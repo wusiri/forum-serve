@@ -71,5 +71,12 @@ public class Reply implements Serializable {
     @ApiModelProperty("回复时间")
     private LocalDateTime replyTime;
 
+    /**
+     * 审核状态
+     */
+    @ApiModelProperty("审核状态")
+    private Integer auditStatus;
+
+
 
 }

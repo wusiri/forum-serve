@@ -1,4 +1,4 @@
-package wlong.work.forum.common;
+package wlong.work.forumserve.common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;

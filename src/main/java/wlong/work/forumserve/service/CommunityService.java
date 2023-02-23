@@ -1,5 +1,6 @@
 package wlong.work.forumserve.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import wlong.work.forumserve.domain.Community;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -11,6 +12,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author wl
  * @since 2022-11-07
  */
-public interface ICommunityService extends IService<Community> {
+public interface CommunityService extends IService<Community> {
+
+    Page<Community> getPage(Integer page, Integer pageSize, String name);
+
+    boolean updateGoodNum(int communityGoodNum, Integer communityId);
+
 
 }

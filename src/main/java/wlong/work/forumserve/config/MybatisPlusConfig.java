@@ -1,4 +1,4 @@
-package work.wlong.takeout.config;
+package wlong.work.forumserve.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;

@@ -67,5 +67,12 @@ public class Comment implements Serializable {
     @ApiModelProperty("评论时间")
     private LocalDateTime commentTime;
 
+    /**
+     * 审核状态
+     */
+    @ApiModelProperty("审核状态")
+    private Integer auditStatus;
+
+
 
 }

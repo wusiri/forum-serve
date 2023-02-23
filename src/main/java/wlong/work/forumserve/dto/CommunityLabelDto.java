@@ -18,24 +18,25 @@ public class CommunityLabelDto {
 
 
     /**
-     * 社区id
+     * 标签id
      */
-    @ApiModelProperty("社区id")
-    private Integer communityId;
-
-    /**
-     * 社区名称
-     */
-    @ApiModelProperty("社区名称")
-    private String communityName;
-
-
-    @ApiModelProperty("标签id")
-    private Integer labelId;
+    @ApiModelProperty("id")
+    private Integer tagId;
 
     /**
      * 标签名称
      */
     @ApiModelProperty("标签名称")
-    private String labelName;
+    private String tagName;
+
+    /**
+     * 标识符
+     */
+    @ApiModelProperty("标签名称")
+    private Integer tagState;
+
+
+
+
+
 }

@@ -1,5 +1,6 @@
 package wlong.work.forumserve.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import wlong.work.forumserve.domain.Slideshow;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author wl
  * @since 2022-11-07
  */
-public interface ISlideshowService extends IService<Slideshow> {
+public interface SlideshowService extends IService<Slideshow> {
 
+    Page<Slideshow> getPage(Integer page, Integer pageSize, String name);
 }

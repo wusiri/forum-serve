@@ -1,10 +1,16 @@
 package wlong.work.forumserve.service.impl;
 
-import wlong.work.forumserve.domain.Article_label;
-import wlong.work.forumserve.dao.Article_labelDao;
-import wlong.work.forumserve.service.IArticle_labelService;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import wlong.work.forumserve.domain.ArticleLabel;
+import wlong.work.forumserve.dao.ArticleLabelDao;
+import wlong.work.forumserve.service.ArticleLabelService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -15,6 +21,23 @@ import org.springframework.stereotype.Service;
  * @since 2022-11-07
  */
 @Service
-public class Article_labelServiceImpl extends ServiceImpl<Article_labelDao, Article_label> implements IArticle_labelService {
+public class ArticleLabelServiceImpl extends ServiceImpl<ArticleLabelDao, ArticleLabel> implements ArticleLabelService {
 
+
+    @Resource
+    private ArticleLabelDao articleLabelDao;
+
+    @Override
+    public Page<ArticleLabel> getPage(Integer page, Integer pageSize, String name) {
+        //分页构造器
+        Page<ArticleLabel> pageInfo = new Page<>(page,pageSize);
+        //过滤条件
+        LambdaQueryWrapper<ArticleLabel> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.like(StringUtils.isNotEmpty(name), ArticleLabel::getLabelName, name);
+        //添加排序条件
+        queryWrapper.orderByAsc(ArticleLabel::getLabelId);
+        //执行查询
+        articleLabelDao.selectPage(pageInfo, queryWrapper);
+        return pageInfo;
+    }
 }

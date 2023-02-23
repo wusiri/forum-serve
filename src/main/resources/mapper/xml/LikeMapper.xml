@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="wlong.work.forumserve.dao.SlideshowDao">
+<mapper namespace="wlong.work.forumserve.dao.LikeDao">
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="wlong.work.forumserve.domain.Slideshow">
-        <id column="slideshow_id" property="slideshowId" />
-        <result column="image_url" property="imageUrl" />
+    <resultMap id="BaseResultMap" type="wlong.work.forumserve.domain.Like">
+        <id column="like_id" property="likeId"/>
+        <result column="article_id" property="articleId"/>
+        <result column="comment_id" property="commentId"/>
+        <result column="reply_id" property="replyId"/>
+        <result column="user_id" property="userId"/>
+        <result column="article_like_num" property="articleLikeNum"/>
+        <result column="comment_like_num" property="commentLikeNum"/>
+        <result column="reply_like_num" property="replyLikeNum"/>
+
+
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        slideshow_id, image_url
+        like_id, article_id,comment_id,reply_id,user_id,article_like_num,comment_like_num,reply_like_num
     </sql>
 </mapper>

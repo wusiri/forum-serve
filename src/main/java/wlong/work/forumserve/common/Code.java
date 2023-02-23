@@ -1,4 +1,4 @@
-package wlong.work.forum.common;
+package wlong.work.forumserve.common;
 //状态码
 public class Code {
     public static final Integer SAVE_OK = 20011;

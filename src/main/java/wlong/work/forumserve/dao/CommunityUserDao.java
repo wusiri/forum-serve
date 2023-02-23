@@ -1,6 +1,6 @@
 package wlong.work.forumserve.dao;
 
-import wlong.work.forumserve.domain.Community_user;
+import wlong.work.forumserve.domain.CommunityUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author wl
  * @since 2022-11-07
  */
-public interface Community_userDao extends BaseMapper<Community_user> {
+public interface CommunityUserDao extends BaseMapper<CommunityUser> {
 
 }

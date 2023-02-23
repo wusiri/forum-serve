@@ -1,10 +1,10 @@
-package wlong.work.forum.filter;
+package wlong.work.forumserve.filter;
 
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
-import wlong.work.forum.common.BaseContext;
-import wlong.work.forum.common.R;
+import wlong.work.forumserve.common.BaseContext;
+import wlong.work.forumserve.common.R;
 
 
 import javax.servlet.*;
@@ -16,7 +16,7 @@ import java.io.IOException;
 /**
  * 检查用户是否登录
  */
-@WebFilter(filterName = "loginCheckFilter", urlPatterns = "/*")
+//@WebFilter(filterName = "loginCheckFilter", urlPatterns = "/*")
 @Slf4j
 public class LoginCheckFilter implements Filter {
 
@@ -57,9 +57,9 @@ public class LoginCheckFilter implements Filter {
         if (request.getSession().getAttribute("admin")!=null) {
             log.info("用户已登录，用户id为：{}",request.getSession().getAttribute("admin"));
 
-            Long empId = (Long) request.getSession().getAttribute("admin");
+            Integer adminId = (Integer) request.getSession().getAttribute("admin");
             //设置empId
-            BaseContext.setCurrentId(empId);
+            BaseContext.setCurrentId(adminId);
 
             filterChain.doFilter(request,response);
             return;
@@ -67,7 +67,7 @@ public class LoginCheckFilter implements Filter {
         if (request.getSession().getAttribute("user")!=null) {
             log.info("用户已登录，用户id为：{}",request.getSession().getAttribute("user"));
 
-            Long userId = (Long) request.getSession().getAttribute("user");
+            Integer userId = (Integer) request.getSession().getAttribute("user");
             //设置empId
             BaseContext.setCurrentId(userId);
 

@@ -1,4 +1,4 @@
-package wlong.work.forum.common;
+package wlong.work.forumserve.common;
 
 /**
  * 自定义业务异常类

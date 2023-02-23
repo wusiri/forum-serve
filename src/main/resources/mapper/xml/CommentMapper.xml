@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="wlong.work.forumserve.dao.CommentDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="wlong.work.forumserve.domain.Comment">
+        <id column="comment_id" property="commentId" />
+        <result column="comment_content" property="commentContent" />
+        <result column="comment_article_id" property="commentArticleId" />
+        <result column="comment_user_id" property="commentUserId" />
+        <result column="comment_time" property="commentTime" />
+    </resultMap>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        comment_id, comment_content, comment_article_id, comment_user_id, comment_time
+    </sql>
 </mapper>

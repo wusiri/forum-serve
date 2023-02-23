@@ -5,12 +5,13 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Setter
 @Getter
 @ApiModel(value = "CommentReply对象",description = "")
-public class CommentReplyVO {
+public class CommentReplyDto {
 
     @ApiModelProperty("评论ID")
     private Integer commentId;
@@ -25,7 +26,10 @@ public class CommentReplyVO {
     private String nickname;
 
     @ApiModelProperty("评论的时间")
-    private String commentTime;
+    private LocalDateTime commentTime;
+
+    @ApiModelProperty("评论的点赞量")
+    private Integer commentGood;
 
     @ApiModelProperty("评论的内容")
     private String commentContent;
@@ -34,6 +38,6 @@ public class CommentReplyVO {
     private boolean inputShow;
 
     @ApiModelProperty("回复")
-    private List<ReplyVO> reply;
+    private List<ReplyDto> reply;
 
 }

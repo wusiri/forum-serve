@@ -1,45 +1,75 @@
 server:
   port: 8088
-  reactive:
-    session:
-      timeout: 60s
 
 spring:
   application:
     name: forum
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_forum?useUnicode=true&useSSL=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/forum_schema?useUnicode=true&useSSL=true&characterEncoding=utf8
     username: root
     password: 1234
     druid:
-      initial-size: 1 # ??????
-      min-idle: 1 # ?????
-      max-active: 20 # ?????
-      test-on-borrow: true # ???????????????
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
 
       stat-view-servlet:
-        allow: true # ?????????html??, ???????JSON API
-#    mvc:
-#      pathmatch:
-#        matching-strategy: ant_path_matcher
+        allow: true # JSON API
 
-  # ??????
+  # 时间格式
   jackson:
     time-zone: GMT+8
+  #redis配置
+  redis:
+    database: 0 # redis数据库索引(默认为0)
+    host: localhost
+    port: 6379
+    pool:
+      max-active: 8  # 连接池最大连接数（使用负值表示没有限制）
+      max-wait: -1  # 连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-idle: 8  # 连接池中的最大空闲连接
+      min-idle: 0  # 连接池中的最小空闲连接
+      timeout: 60s # 连接超时时间
+  session:
+    store-type: redis
+    timeout: 60s # 过期时间
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB
 
-# Mybatis-plus ??
+#  security:
+#    user:
+#      name: user
+#      password: 123456
+
+
+# Mybatis-plus 设置
 mybatis-plus:
-  # ??Mybatis????
+  # 配置Mybatis映射文件
   mapper-locations: classpath:mapper/*.xml
-  # ??Mybatis?????????????????
+  # 配置Mybatis数据返回类型别名（默认别名是类名）
   type-aliases-package: wlong.work.forum.domain
   configuration:
-    #???????????????????????????????????????
+    # 驼峰命名法
     map-underscore-to-camel-case: true
+    # 日志
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       table-prefix: tb_
+
+OSS:
+  accessKey: IaXM0rTcHF4rF__5qn9iuWhHqJgW3XaCXSb1FsAV # 公钥
+  secretKey: FzaGYEpn4jxG-fQj61EOglmloQopNWCuL-UEZf6H # 私钥
+  bucketName: image-forum # 存储名称
+  path: qiniu.wlong.work # 访问域名
+#  documentName: forum
+file:
+  allowed: png,jpg,jpeg,pdf,bmp
+
 forum:
-  path: D:\file\image\
+  path: D:\file\image\forum
+

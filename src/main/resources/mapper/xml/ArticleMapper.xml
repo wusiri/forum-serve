@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="wlong.work.forumserve.dao.ArticleDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="wlong.work.forumserve.domain.Article">
+        <id column="article_id" property="articleId" />
+        <result column="article_label_id" property="articleLabelId" />
+        <result column="article_author" property="articleAuthor" />
+        <result column="article_title" property="articleTitle" />
+        <result column="article_summary" property="articleSummary" />
+        <result column="article_type_id" property="articleTypeId" />
+        <result column="article_content" property="articleContent" />
+        <result column="article_content_html" property="articleContentHtml" />
+        <result column="article_image" property="articleImage" />
+        <result column="user_id" property="userId" />
+        <result column="article_good_num" property="articleGoodNum" />
+        <result column="article_view_num" property="articleViewNum" />
+        <result column="article_community_id" property="articleCommunityId" />
+        <result column="create_time" property="createTime" />
+        <result column="recommend" property="recommend" />
+    </resultMap>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        article_id, article_label_id, article_author, article_title, article_summary, article_type_id, article_content, article_content_html, article_image, user_id, article_good_num, article_view_num, article_community_id, create_time, recommend
+    </sql>
 </mapper>

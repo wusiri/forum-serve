@@ -6,13 +6,13 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import wlong.work.forumserve.common.R;
-import wlong.work.forumserve.domain.Article;
-import wlong.work.forumserve.domain.Comment;
+import wlong.work.forumserve.domain.Like;
 import wlong.work.forumserve.domain.Reply;
+import wlong.work.forumserve.service.LikeService;
 import wlong.work.forumserve.service.ReplyService;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -24,43 +24,54 @@ import java.util.List;
  * @since 2022-11-07
  */
 @RestController
-@RequestMapping("/reply")
-@Api(value = "回复Controller",tags = {"回复访问接口"})
-public class ReplyController {
+@RequestMapping("/like")
+@Api(value = "点赞Controller",tags = {"点赞状态访问接口"})
+public class LikeController {
 
-    @Autowired
-    private ReplyService replyService;
+    @Resource
+    private LikeService likeService;
 
-    @PutMapping("/saveReply")
-    @ApiOperation("保存回复")
-    public R<String> saveReply(@RequestBody Reply reply){
-        boolean save = replyService.save(reply);
-        if(save){
-            return R.success("保存成功");
-        }else {
-            return R.error("保存失败");
+    @GetMapping("/getArticle")
+    @ApiOperation("获取文章点赞状态")
+    public R<Integer> getArticle(@RequestParam("articleId") Integer articleId,@RequestParam("userId") Integer userId){
+        Like like = likeService.getArticleLikeState(articleId, userId);
+        if(like==null){
+            return R.success(0);
         }
+        return R.success(like.getArticleLikeNum());
     }
 
-    @ApiOperation("更新点赞数")
-    @PutMapping("/addGood")
-    public R<String> addGood(@RequestParam("replyGood") Integer goodNum,@RequestParam("replyId") Integer replyId){
-        LambdaUpdateWrapper<Reply> updateWrapper=new LambdaUpdateWrapper<>();
-        updateWrapper.set(Reply::getReplyGood,goodNum).eq(Reply::getReplyId,replyId);
-        boolean update = replyService.update(updateWrapper);
-        if (update){
-            return R.success("更新成功");
-        }else {
-            return R.success("更新失败");
+    @GetMapping("/getComment")
+    @ApiOperation("获取评论点赞状态")
+    public R<Integer> getComment(@RequestParam("commentId") Integer commentId,@RequestParam("userId") Integer userId){
+        Like like = likeService.getCommentLikeState(commentId, userId);
+        if(like==null){
+            return R.success(0);
         }
+        return R.success(like.getCommentLikeNum());
     }
 
-    @ApiOperation("获取全部回复")
-    @GetMapping("getReply/{commentId}")
-    public R<List<Reply>> getReply(@PathVariable("commentId") Integer commentId){
-        List<Reply> comments = replyService.getByCommentID(commentId);
-        return R.success(comments);
+    @GetMapping("/getReply")
+    @ApiOperation("获取回复点赞状态")
+    public R<Integer> getReply(@RequestParam("replyId") Integer replyId,@RequestParam("userId") Integer userId){
+        Like like = likeService.getReplyLikeState(replyId, userId);
+        if(like==null){
+            return R.success(0);
+        }
+        return R.success(like.getReplyLikeNum());
     }
+
+    @GetMapping("/getCommunity")
+    @ApiOperation("获取社区点赞状态")
+    public R<Integer> getCommunity(@RequestParam("communityId") Integer communityId,@RequestParam("userId") Integer userId){
+        Like like = likeService.getCommunityLikeState(communityId, userId);
+        if(like==null){
+            return R.success(0);
+        }
+        return R.success(like.getCommunityLikeNum());
+    }
+
+
 
 }
 

@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author wl
  * @since 2022-11-07
  */
-public interface IAreaService extends IService<Area> {
+public interface AreaService extends IService<Area> {
 
 }

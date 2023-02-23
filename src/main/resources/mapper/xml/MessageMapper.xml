@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="wlong.work.forumserve.dao.ArticleLabelDao">
+<mapper namespace="wlong.work.forumserve.dao.MessageDao">
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="wlong.work.forumserve.domain.ArticleLabel">
-        <id column="label_id" property="labelId" />
-        <result column="label_name" property="labelName" />
-        <result column="enabled" property="enabled" />
+    <resultMap id="BaseResultMap" type="wlong.work.forumserve.domain.Message">
+        <id column="message_id" property="messageId" />
+        <result column="message_info" property="messageInfo" />
+        <result column="message_user" property="messageUser"/>
+        <result column="message_from_user" property="messageFromUser"/>
+        <result column="message_type" property="messageType"/>
+        <result column="message_state" property="messageState"/>
+        <result column="message_time" property="messageTime"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        label_id, label_name, enabled
+        message_id,message_info,message_from_user,message_user,message_type,message_state,message_time
     </sql>
 </mapper>

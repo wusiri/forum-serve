@@ -1,8 +1,12 @@
 package wlong.work.forumserve.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import wlong.work.forumserve.domain.ArticleLabel;
 import com.baomidou.mybatisplus.extension.service.IService;
+import wlong.work.forumserve.domain.ArticleLabel;
+import wlong.work.forumserve.domain.Message;
+import wlong.work.forumserve.dto.MessageUserDto;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,7 +16,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author wl
  * @since 2022-11-07
  */
-public interface ArticleLabelService extends IService<ArticleLabel> {
+public interface MessageService extends IService<Message> {
 
-    Page<ArticleLabel> getPage(Integer page, Integer pageSize, String name);
+    Page<Message> getPage(Integer page, Integer pageSize, String name);
+
+
+    List<Message> getList(Integer type, Integer userId, Integer state);
 }
