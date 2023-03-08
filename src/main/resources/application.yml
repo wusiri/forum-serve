@@ -62,10 +62,10 @@ mybatis-plus:
       table-prefix: tb_
 
 OSS:
-  accessKey: IaXM0rTcHF4rF__5qn9iuWhHqJgW3XaCXSb1FsAV # 公钥
-  secretKey: FzaGYEpn4jxG-fQj61EOglmloQopNWCuL-UEZf6H # 私钥
-  bucketName: image-forum # 存储名称
-  path: qiniu.wlong.work # 访问域名
+  accessKey:  # 公钥
+  secretKey:  # 私钥
+  bucketName:  # 存储名称
+  path:  # 访问域名
 #  documentName: forum
 file:
   allowed: png,jpg,jpeg,pdf,bmp
